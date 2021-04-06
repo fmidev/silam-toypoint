@@ -1,0 +1,168 @@
+
+# Control file for SILAM v5.4 operational run
+
+CONTROL_V5_3
+LIST = general_parameters  
+   case_name = toypoint
+   direction_in_time = FORWARD 
+   simulation_type = EULERIAN
+   start_time = 2017 01 01 06 00 0.0
+   computed_period = 6 hr
+   time_step = 10 min
+   cut_area_source_if_outside_meteo_grid = YES
+   computation_accuracy = 5
+ END_LIST = general_parameters 
+
+ LIST = mpi_parallel_parameters
+   x_divisions = 1
+   y_divisions = 2
+   max_wind_speed = 100 # [m/s]
+   use_mpiio = YES
+   use_mpiio_netcdf = YES
+ END_LIST = mpi_parallel_parameters
+
+ LIST = dispersion_parameters
+   grid_method = OUTPUT_GRID
+   vertical_method = OUTPUT_LEVELS    # METEO_LEVELS / OUTPUT_LEVELS / CUSTOM_LEVELS
+ END_LIST = dispersion_parameters
+
+ LIST = meteo_parameters
+   dynamic_meteo_file = GRIB ERA_I-cut/era_interim_europe_%ay4%am2%ad2%ah2+%f2.ml
+   dynamic_meteo_file = GRIB ERA_I-cut/era_interim_europe_%ay4%am2%ad2%ah2+%f2.sfc
+   static_meteo_file =  GRIB ERA_I-cut/era_interim_europe_1980010100+0.sfc
+    meteo_time_step = 6 hr 
+   if_wait_for_data = YES
+   abl_parameterization_method = FULL_PARAM    # DRY_ABL, FULL_PARAM 
+   number_of_precipitation_fields = 2
+ END_LIST = meteo_parameters
+
+LIST = emission_parameters
+
+   emission_source = EULERIAN  src_point.v5
+#   emission_source = EULERIAN  toysalt.src
+
+   cut_area_source_if_outside_meteo_grid = YES
+      
+   if_technical_source_dump = NONE   # NONE / ORIGINAL_GRID / DISPERSION_GRID
+
+ END_LIST = emission_parameters
+ LIST = initial_and_boundary_conditions
+ #initialize_quantity = concentration   ! if no such line, initial conditions are void
+ #initialization_file = GRADS init.super_ctl
+ #boundary_type =  DIRICHLET        ! ZERO / DIRICHLET   
+ #if_lateral_boundary = YES         ! YES/NO 
+ #if_top_boundary =  YES             ! YES/NO 
+ #if_bottom_boundary =  NO          ! YES/NO 
+ #boundary_time_step =  3 hr        ! timestep unit 
+ #boundary_header_filename = ../common/boundary_cb4.ini
+ END_LIST = initial_and_boundary_conditions
+
+ LIST = transformation_parameters
+#   transformation = PASSIVE EULERIAN 
+#   transformation = PM_GENERAL EULERIAN 
+#   transformation = DMAT_SULPHUR EULERIAN 
+#   transformation = CB4 EULERIAN 
+#   transformation = POP_GENERAL EULERIAN 
+#   transformation = ACID_BASIC EULERIAN 
+#   transformation = RADIOACTIVE EULERIAN 
+
+#   aerosol_dynamics = SIMPLE EULERIAN 
+   
+   dry_deposition_scheme = KS2011_TF
+   wet_deposition_scheme = STANDARD_3D_SCAVENGING
+    
+   if_actual_humidity_for_particle_size = YES
+   default_relative_humidity = 0.8
+   compute_thermodiffusion = NO
+   mass_low_threshold = STANDARD_ACCURACY  # CRUDE_ACCURACY, STANDARD_ACCURACY, HIGH_ACCURACY
+   
+   passive_subst_ref_lifetime = 500 day
+   passive_subst_ref_tempr = 288
+   passive_subst_dLifeTime_dT = -1 min/K
+   
+   ADB_if_compute_nucleation = YES
+   ADB_nucleation_scheme = KINETIC    # BINARY, TERNARY, KINETIC, ACTIVATION
+   ADB_if_compute_coagulation = YES
+   ADB_if_compute_condensation = YES
+   ADB_if_compute_cloud_activation = NO
+   ADB_if_recalc_wet_d = YES
+   
+   if_full_acid_chemistry = YES
+
+   make_coarse_no3 = sslt   0.03  ! material of aerosol to make it on and stickiness coef
+
+ END_LIST = transformation_parameters
+
+ LIST = optical_density_parameters ############
+   optical_coefficients_depend_on_relative_humidity = YES
+   optical_coefficients_depend_on_temperature = YES
+   if_split_aerosol_modes = YES            ! doesn't work yet
+   if_narrow_wave_bands = YES              ! doesn't work yet
+ END_LIST = optical_density_parameters
+
+ LIST = output_parameters
+   source_id = NO_SOURCE_SPLIT  # SOURCE_NAME  SOURCE_SECTOR  SOURCE_NAME_AND_SECTOR 
+   vertical_method = CUSTOM_LAYERS
+   level_type = HEIGHT_FROM_SURFACE 
+   layer_thickness = 25. 50. 100. 200. 400. 750. 1200. 2000. 2000   # output levels [m]/[pa]/[hybrid_nbr], reals
+   output_time_step = 1 hr 
+   output_times = REGULAR 
+   output_format = NETCDF3
+   time_split = ALL_IN_ONE
+   template =  output/%case
+   variable_list = output_config.ini
+   grid_method = CUSTOM_GRID
+   grid_type = lon_lat
+   grid_title = GEMS output grid
+   resol_flag = 128
+   ifReduced = 0 
+   earth_flag = 0
+   wind_component = 0 
+   reduced_nbr_str = 0 
+   
+   lon_start = -10.0
+   lat_start = 60.0
+   nx = 40
+   dx = 0.25
+   ny = 40
+   dy = 0.25
+
+   lat_s_pole = -90.
+   lon_s_pole = 0.
+   lat_pole_stretch = 0.
+   lon_pole_stretch = 0.
+ END_LIST = output_parameters
+
+ LIST = STANDARD_SETUP
+   max_hole_in_meteo_data = 6 hr   
+#horizontal_advection_method_eulerian = EULERIAN_HORIZ_V5
+   #vertical_advection_method_eulerian = EULERIAN_VERT_V5
+   advection_method_eulerian = EULERIAN_V5
+   kz_profile_method = SILAM_ABL_EC_FT_KZ
+   advection_method_lagrangian = LAGRANGIAN_WIND_ENDPOINT_3D
+   random_walk_method = FULLY_MIXED
+   advection_method_default = EULERIAN
+   abl_height_method = COMBINATION
+   continuity_equation = anelastic_v2
+   horizontal_interpolation = LINEAR
+   vertical_interpolation = LINEAR
+   time_interpolation = LINEAR
+   nuclide_database_fnm = ini/silam_nuclides.dat
+   chemical_database_fnm = ini/silam_chemicals.dat
+   standard_cocktail_fnm = ini/standard_chemistry_cocktails.ini
+   standard_cocktail_fnm = ini/standard_aerosols_cocktails.ini
+   standard_cocktail_fnm = ini/standard_auxillary_cocktails.ini
+   grib_code_table_fnm = ini/grib_code_table_v5.silam
+   netcdf_name_table_fnm = ini/netcdf_name_table.silam
+#   land_use_data_meta_file = data/physio/land_use_features_USGS_Eurasia.dat
+   optical_properties_meta_data_file = ini/optical_properties.dat
+   photolysis_data_file = ini/photolysis_finrose.dat
+   timezone_list_fnm = ini/tzindex.dat
+   allow_zero_forecast_length = NO
+   precipitation_low_limit = 0.1 mm/hr
+   print_debug_info = DEBUG_INFO_YES
+   cloud_report_interval = 1
+   disregard_meteo_data_sources = YES
+ END_LIST = STANDARD_SETUP
+
+END_CONTROL_V5_3
