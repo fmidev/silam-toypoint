@@ -14,7 +14,7 @@ Please teplace "/path/to/silam-model" below with the location of a working copy 
 /path/to/silam-model/ini directory. The path can be absolute, relative or a symlink.
 
 Example for the symlink:
-`$ ln -sfn /path/to/silam-model/ini`
+`$ ln -sfn /path/to/silam-model/ini ini`
 
 3. Then feeding a .control file as a parameter to Silam should run the case. E.g. 
 
