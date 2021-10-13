@@ -1,5 +1,5 @@
 
-# Control file for SILAM v5.4 operational run
+# Control file for SILAM v5.7 
 
 CONTROL_V5_3
 LIST = general_parameters  
@@ -47,6 +47,9 @@ LIST = emission_parameters
 
  END_LIST = emission_parameters
  LIST = initial_and_boundary_conditions
+ 
+ lateral_boundary_type = ZERO
+ top_boundary_type = ZERO
  #initialize_quantity = concentration   ! if no such line, initial conditions are void
  #initialization_file = GRADS init.super_ctl
  #boundary_type =  DIRICHLET        ! ZERO / DIRICHLET   
@@ -58,15 +61,6 @@ LIST = emission_parameters
  END_LIST = initial_and_boundary_conditions
 
  LIST = transformation_parameters
-#   transformation = PASSIVE EULERIAN 
-#   transformation = PM_GENERAL EULERIAN 
-#   transformation = DMAT_SULPHUR EULERIAN 
-#   transformation = CB4 EULERIAN 
-#   transformation = POP_GENERAL EULERIAN 
-#   transformation = ACID_BASIC EULERIAN 
-#   transformation = RADIOACTIVE EULERIAN 
-
-#   aerosol_dynamics = SIMPLE EULERIAN 
    
    dry_deposition_scheme = KS2011_TF
    wet_deposition_scheme = STANDARD_3D_SCAVENGING
@@ -74,7 +68,6 @@ LIST = emission_parameters
    if_actual_humidity_for_particle_size = YES
    default_relative_humidity = 0.8
    compute_thermodiffusion = NO
-   mass_low_threshold = STANDARD_ACCURACY  # CRUDE_ACCURACY, STANDARD_ACCURACY, HIGH_ACCURACY
    
    passive_subst_ref_lifetime = 500 day
    passive_subst_ref_tempr = 288
@@ -135,9 +128,11 @@ LIST = emission_parameters
 
  LIST = STANDARD_SETUP
    max_hole_in_meteo_data = 6 hr   
-#horizontal_advection_method_eulerian = EULERIAN_HORIZ_V5
-   #vertical_advection_method_eulerian = EULERIAN_VERT_V5
    advection_method_eulerian = EULERIAN_V5
+   mass_distributor = TRIANGLE_SLAB
+   diffuse_vert_cm = YES
+   reference_4_low_mass_threshold = CONST
+
    kz_profile_method = SILAM_ABL_EC_FT_KZ
    advection_method_lagrangian = LAGRANGIAN_WIND_ENDPOINT_3D
    random_walk_method = FULLY_MIXED
@@ -149,13 +144,11 @@ LIST = emission_parameters
    time_interpolation = LINEAR
    standard_setup_directory = ini
    nuclide_database_fnm = ^silam_nuclides.dat
-   chemical_database_fnm = ^silam_chemicals.dat
-   standard_cocktail_fnm = ^standard_chemistry_cocktails.ini
+   chemical_database_fnm = ^silam_chemicals_95_OC.dat
    standard_cocktail_fnm = ^standard_aerosols_cocktails.ini
    standard_cocktail_fnm = ^standard_auxillary_cocktails.ini
    grib_code_table_fnm = ^grib_code_table_v5.silam
    netcdf_name_table_fnm = ^netcdf_name_table.silam
-#   land_use_data_meta_file = data/physio/land_use_features_USGS_Eurasia.dat
    optical_properties_meta_data_file = ^optical_properties.dat
    photolysis_data_file = ^photolysis_finrose.dat
    timezone_list_fnm = ^tzindex.dat
