@@ -50,18 +50,9 @@ LIST = emission_parameters
  
  lateral_boundary_type = ZERO
  top_boundary_type = ZERO
- #initialize_quantity = concentration   ! if no such line, initial conditions are void
- #initialization_file = GRADS init.super_ctl
- #boundary_type =  DIRICHLET        ! ZERO / DIRICHLET   
- #if_lateral_boundary = YES         ! YES/NO 
- #if_top_boundary =  YES             ! YES/NO 
- #if_bottom_boundary =  NO          ! YES/NO 
- #boundary_time_step =  3 hr        ! timestep unit 
- #boundary_header_filename = ../common/boundary_cb4.ini
  END_LIST = initial_and_boundary_conditions
 
  LIST = transformation_parameters
-   
    dry_deposition_scheme = KS2011_TF
    wet_deposition_scheme = STANDARD_3D_SCAVENGING
     
@@ -97,6 +88,7 @@ LIST = emission_parameters
    source_id = NO_SOURCE_SPLIT  # SOURCE_NAME  SOURCE_SECTOR  SOURCE_NAME_AND_SECTOR 
    vertical_method = CUSTOM_LAYERS
    level_type = HEIGHT_FROM_SURFACE 
+   reference_4_low_mass_threshold = CONST #EMISSION or DEFAULT
    layer_thickness = 25. 50. 100. 200. 400. 750. 1200. 2000. 2000   # output levels [m]/[pa]/[hybrid_nbr], reals
    output_time_step = 1 hr 
    output_times = REGULAR 
