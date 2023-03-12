@@ -7,10 +7,17 @@ is used as a meteo driver for the case.
 
 ## Usage
 
-1. Get and compile compile SILAM (see https://github.com/fmidev/silam-model). 
-Please teplace "/path/to/silam-model" below with the location of a working copy of the repo.
+1. If not yet done, get and compile compile SILAM (see
+   https://github.com/fmidev/silam-model) to get thw model binary and
+   supplementary data files.  Instructions below assume that
+   "/path/to/silam-model" is the location of a working copy of the silam-model
+   repo.
 
-2. Make sure that `standard_setup_directory` parameter in the `toypoint_mpi.control` file points to 
+2. Clone the present directory to some other path:
+  `$ git clone https://github.com/fmidev/silam-toypoint`
+  `cd  silam-toypoint`
+
+3. Make sure that `standard_setup_directory` parameter in the `toypoint_mpi.control` file points to 
 /path/to/silam-model/ini directory. The path can be absolute, relative or a symlink.
 
 Example for the symlink:
