@@ -14,18 +14,21 @@ is used as a meteo driver for the case.
    repo.
 
 2. Clone the present directory to some other path:
+
   `$ git clone https://github.com/fmidev/silam-toypoint`
-  `cd  silam-toypoint`
+
+  `$ cd  silam-toypoint`
 
 3. Make sure that `standard_setup_directory` parameter in the `toypoint_mpi.control` file points to 
 /path/to/silam-model/ini directory. The path can be absolute, relative or a symlink.
 
 Example for the symlink:
+
 `$ ln -sfn /path/to/silam-model/ini ini`
 
 3. Then feeding a .control file as a parameter to Silam should run the case. E.g. 
 
-`$ /path/to/silam-model/bin/silam_v5_7pub toypoint_mpi.control`
+`$ /path/to/silam-model/bin/silam_v5_8pub toypoint_mpi.control`
 
 should produce you a nice simulation of a puff dispersion.
 
