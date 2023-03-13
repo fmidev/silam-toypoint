@@ -49,8 +49,8 @@ stack_height = 10 m
 # Otherwise each line contains: 
 #  y4 m2 d2 h2 m2 sec(real)  <xy_size> <bottom> <top> <z-velocity> <tempr> <cocktail_name1><rate1>...
 
-par_str_point = 2017 01 01 06 00 0.0    1.    1. 1000.   5.0   450.  PASSIVE_COCKTAIL 2.  AEROSOL_2_5_COCKTAIL  5.  AEROSOL_COARSE_COCKTAIL 5. #TEST_COCKTAIL 1.  AEROSOL_2_5_COCKTAIL  1. 
-par_str_point = 2017 01 01 07 00 0.0    1.    1. 1000.   5.0   450.  PASSIVE_COCKTAIL 3.  AEROSOL_2_5_COCKTAIL  5.  AEROSOL_COARSE_COCKTAIL 5. # TEST_COCKTAIL 5.  AEROSOL_2_5_COCKTAIL  1.  
+par_str_point = 2017 01 01 06 00 0.0    1.    500. 1000.   5.0   450.  PASSIVE_COCKTAIL 2.  PM_COARSE 5. PM_VERY_COARSE 5. #TEST_COCKTAIL 1.  AEROSOL_2_5_COCKTAIL  1. 
+par_str_point = 2017 01 01 07 00 0.0    1.    500. 1000.   5.0   450.  PASSIVE_COCKTAIL 3.  PM_COARSE 5. PM_VERY_COARSE 5. # TEST_COCKTAIL 5.  AEROSOL_2_5_COCKTAIL  1.  
 
 #
 # ETEX source timing:

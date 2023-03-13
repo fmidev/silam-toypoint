@@ -145,7 +145,6 @@ LIST = emission_parameters
    photolysis_data_file = ^photolysis_finrose.dat
    timezone_list_fnm = ^tzindex.dat
    allow_zero_forecast_length = NO
-   precipitation_low_limit = 0.1 mm/hr
    print_debug_info = DEBUG_INFO_YES
    cloud_report_interval = 1
    disregard_meteo_data_sources = YES
