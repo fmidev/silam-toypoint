@@ -27,8 +27,8 @@ source_sector_name =         # source sector name, e.g. SNAP_10. May be empty
 #
 # Some norwegian sea
 #
-source_longitude = -5         # start geograph. lat., degrees and decimals, N positive
-source_latitude = 65          # start geograph. lon., degrees and decimals, E positive
+source_longitude = -6         # start geograph. lat., degrees and decimals, N positive
+source_latitude = 66          # start geograph. lon., degrees and decimals, E positive
 
 # Plume characteristics: horizontal size, gas vertical velocity and temperature
 # Used only if plume rise routine is activated and ignored otherwise.
@@ -49,8 +49,8 @@ stack_height = 10 m
 # Otherwise each line contains: 
 #  y4 m2 d2 h2 m2 sec(real)  <xy_size> <bottom> <top> <z-velocity> <tempr> <cocktail_name1><rate1>...
 
-par_str_point = 2017 01 01 06 00 0.0    1.    500. 1000.   5.0   450.  PASSIVE_COCKTAIL 2.  PM_COARSE 5. PM_VERY_COARSE 5. #TEST_COCKTAIL 1.  AEROSOL_2_5_COCKTAIL  1. 
-par_str_point = 2017 01 01 07 00 0.0    1.    500. 1000.   5.0   450.  PASSIVE_COCKTAIL 3.  PM_COARSE 5. PM_VERY_COARSE 5. # TEST_COCKTAIL 5.  AEROSOL_2_5_COCKTAIL  1.  
+par_str_point = 2017 01 01 06 00 0.0    1.    50. 100.   5.0   450.  PASSIVE_COCKTAIL 2e-3  PM_COARSE 5. PM_VERY_COARSE 5. #TEST_COCKTAIL 1.  AEROSOL_2_5_COCKTAIL  1. 
+par_str_point = 2017 01 01 07 00 0.0    1.    50. 100.   5.0   450.  PASSIVE_COCKTAIL 8e-3  PM_COARSE 5. PM_VERY_COARSE 5. # TEST_COCKTAIL 5.  AEROSOL_2_5_COCKTAIL  1.  
 
 #
 # ETEX source timing:
