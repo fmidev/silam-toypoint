@@ -31,7 +31,7 @@ while (t<=nT)
   date = substr(datetime,4,11)
   
   'set grads off'
-  'set clevs .1 .2 .5 1 2 5 10 20 50 100 200'
+  'set clevs 0.02 0.05 .1 .2 .5 1 2 5 10 20 50'
   'set grads off'
   'd cnc_'sp'*1e9'
   'cbar'

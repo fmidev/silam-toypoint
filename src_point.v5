@@ -40,7 +40,6 @@ release_rate_unit = kg/sec  # Unit of the release rate: <mass>/<time>
                            # [yr][mon][day][hr][min][sec] - time units
 vertical_unit = m  #hpa   # unit of the vertical release boundaries [hpa] or [m]
 vertical_distribution =  SINGLE_LEVEL_DYNAMIC # SINGLE_LEVEL_DYNAMIC, MULTI_LEVEL_FIXED, PLUME_RISE
-stack_height = 10 m
 
 # Time-strength-composition data. 
 # Arbitrary number of lines. The last line determines the end of the release

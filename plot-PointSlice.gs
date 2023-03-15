@@ -36,7 +36,7 @@ while (t<=nT)
   date = substr(datetime,4,11)
   
   'set grads off'
-  'set clevs .1 .2 .5 1 2 5 10 20 50 100'
+  'set clevs .01 .02 .05 .1 .2 .5 1 2 5 10 20'
   'set grads off'
   'd ave(cnc_'sp',y=1,y='nY')*1e9'
   'cbar'
