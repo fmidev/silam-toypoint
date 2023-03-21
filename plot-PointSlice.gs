@@ -3,7 +3,7 @@ sp='PM_m20'
 sp='PM_m6_0'
 sp='passive_gas'
 infile ='output/toypoint.nc'
-outDir ='picsPointSlice'
+outDir ='output/picsPointSlice'
 
 'reinit'
 

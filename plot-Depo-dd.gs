@@ -1,9 +1,9 @@
 #!/usr/bin/grads -bqpc
 sp='PM_m20'
-sp='PM_m6_0'
-sp='passive_gas'
+#sp='PM_m6_0'
+#sp='passive_gas'
 infile ='output/toypoint.nc'
-outDir ='picsPoint_dd'
+outDir ='output/picsPoint_dd'
 
 'reinit'
 
