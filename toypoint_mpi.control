@@ -54,7 +54,7 @@ LIST = emission_parameters
 
  LIST = transformation_parameters
    dry_deposition_scheme = KS2011_TF
-   wet_deposition_scheme = STANDARD_3D_SCAVENGING
+   wet_deposition_scheme = NO_SCAVENGING  # STANDARD_3D_SCAVENGING
     
    if_actual_humidity_for_particle_size = YES
    default_relative_humidity = 0.8
