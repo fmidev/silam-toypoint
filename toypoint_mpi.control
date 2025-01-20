@@ -29,6 +29,7 @@ LIST = general_parameters
  LIST = meteo_parameters
    dynamic_meteo_file = GRIB ERA_I-cut/era_interim_europe_%ay4%am2%ad2%ah2+%f2.ml
    dynamic_meteo_file = GRIB ERA_I-cut/era_interim_europe_%ay4%am2%ad2%ah2+%f2.sfc
+   dynamic_meteo_file = TEST_FIELD ice_fract SURFACE_LEVEL  0.0
    static_meteo_file =  GRIB ERA_I-cut/era_interim_europe_1980010100+0.sfc
     meteo_time_step = 6 hr 
    if_wait_for_data = NO
