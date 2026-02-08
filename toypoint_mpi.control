@@ -35,6 +35,7 @@ LIST = general_parameters
    if_wait_for_data = YES
    abl_parameterization_method = FULL_PARAM    # DRY_ABL, FULL_PARAM 
    number_of_precipitation_fields = 2
+   use_lai = NONE
  END_LIST = meteo_parameters
 
 LIST = emission_parameters
@@ -140,7 +141,7 @@ LIST = emission_parameters
    chemical_database_fnm = ^silam_chemicals_95_OC.dat
    standard_cocktail_fnm = ^standard_aerosols_cocktails.ini
    standard_cocktail_fnm = ^standard_auxillary_cocktails.ini
-   grib_code_table_fnm = ^grib_code_table_v5.silam
+   grib_name_table_fnm = ^grib_name_table.silam
    netcdf_name_table_fnm = ^netcdf_name_table.silam
    optical_properties_meta_data_file = ^optical_properties.dat
    photolysis_data_file = ^photolysis_finrose.dat
